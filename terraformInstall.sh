@@ -21,7 +21,9 @@ else
 fi
 
 if (gpg --no-default-keyring \
-   --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \ --fingerprint | grep -q "$(wget -O- https://apt.releases.hashicorp.com/gpg | gpg --show-keys --fingerprint | grep -oP "([A-F0-9]{4}\s*){10}")")
+   --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+   --fingerprint | grep -q "$(wget -O- https://apt.releases.hashicorp.com/gpg | \
+   gpg --show-keys --fingerprint | grep -oP "([A-F0-9]{4}\s*){10}")")
 then
    echo "HashiCorp GPG key fingerprint verified successfully"
 else
